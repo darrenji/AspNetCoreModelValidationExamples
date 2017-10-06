@@ -37,6 +37,14 @@ namespace AspNetCoreModelValidationExamples.Controllers
                 ModelState.AddModelError(nameof(appt.TermsAccepted), "Your must accept the terms");
             }
 
+            if(ModelState.GetFieldValidationState(nameof(appt.Date)) == ModelValidationState.Valid
+                && ModelState.GetValidationState(nameof(appt.ClientName))== ModelValidationState.Valid
+                && appt.ClientName.Equals("Joe", StringComparison.OrdinalIgnoreCase)
+                && appt.Date.DayOfWeek == DayOfWeek.Monday)
+            {
+                ModelState.AddModelError("", "Joe cannt book appontments on Mondays");
+            }
+
             if (ModelState.IsValid)
             {
                 return View("Completed", appt);
