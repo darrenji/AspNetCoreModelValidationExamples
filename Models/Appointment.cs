@@ -10,7 +10,7 @@ namespace AspNetCoreModelValidationExamples.Models
     {
         public string ClientName { get; set; }
 
-        [UIHint("Date")]
+        //[UIHint("Date")]
         public DateTime Date { get; set; }
 
         public bool TermsAccepted { get; set; }
