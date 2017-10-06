@@ -55,5 +55,22 @@ namespace AspNetCoreModelValidationExamples.Controllers
             }
             
         }
+
+        public JsonResult ValidateDate(string Date)
+        {
+            DateTime parseDate;
+
+            if(!DateTime.TryParse(Date, out parseDate))
+            {
+                return Json("Please enter a valid date");
+            } else if(DateTime.Now > parseDate)
+            {
+                return Json("Please enter a date in the future");
+            }
+            else
+            {
+                return Json(true);
+            }
+        }
     }
 }

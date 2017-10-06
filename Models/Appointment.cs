@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 using AspNetCoreModelValidationExamples.Infrastructure;
+using Microsoft.AspNetCore.Mvc;
 
 namespace AspNetCoreModelValidationExamples.Models
 {
@@ -15,6 +16,7 @@ namespace AspNetCoreModelValidationExamples.Models
 
         //[UIHint("Date")]
         [Required(ErrorMessage ="Please enter a date")]
+        [Remote("ValidateDate","Home")]
         public DateTime Date { get; set; }
 
         //[Range(typeof(bool), "true", "true", ErrorMessage ="You must accept the terms")]
