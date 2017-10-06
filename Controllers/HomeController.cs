@@ -21,21 +21,21 @@ namespace AspNetCoreModelValidationExamples.Controllers
         [HttpPost]
         public ViewResult MakeBooking(Appointment appt)
         {
-            if(string.IsNullOrEmpty(appt.ClientName))
-            {
-                ModelState.AddModelError(nameof(appt.ClientName), "Please enter your name");
-            }
+            //if(string.IsNullOrEmpty(appt.ClientName))
+            //{
+            //    ModelState.AddModelError(nameof(appt.ClientName), "Please enter your name");
+            //}
 
-            //通过GetValidationSate("")获取ModelValidationState枚举类型
-            if(ModelState.GetValidationState("Date")==ModelValidationState.Valid && DateTime.Now > appt.Date)
-            {
-                ModelState.AddModelError(nameof(appt.Date), "Please enter a date in the future");
-            }
+            ////通过GetValidationSate("")获取ModelValidationState枚举类型
+            //if(ModelState.GetValidationState("Date")==ModelValidationState.Valid && DateTime.Now > appt.Date)
+            //{
+            //    ModelState.AddModelError(nameof(appt.Date), "Please enter a date in the future");
+            //}
 
-            if (!appt.TermsAccepted)
-            {
-                ModelState.AddModelError(nameof(appt.TermsAccepted), "Your must accept the terms");
-            }
+            //if (!appt.TermsAccepted)
+            //{
+            //    ModelState.AddModelError(nameof(appt.TermsAccepted), "Your must accept the terms");
+            //}
 
             if(ModelState.GetFieldValidationState(nameof(appt.Date)) == ModelValidationState.Valid
                 && ModelState.GetValidationState(nameof(appt.ClientName))== ModelValidationState.Valid
