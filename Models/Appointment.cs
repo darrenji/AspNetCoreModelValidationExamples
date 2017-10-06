@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
+using AspNetCoreModelValidationExamples.Infrastructure;
 
 namespace AspNetCoreModelValidationExamples.Models
 {
@@ -16,7 +17,8 @@ namespace AspNetCoreModelValidationExamples.Models
         [Required(ErrorMessage ="Please enter a date")]
         public DateTime Date { get; set; }
 
-        [Range(typeof(bool), "true", "true", ErrorMessage ="You must accept the terms")]
+        //[Range(typeof(bool), "true", "true", ErrorMessage ="You must accept the terms")]
+        [MustBeTrue(ErrorMessage = "You must accept the terms")]
         public bool TermsAccepted { get; set; }
     }
 }
